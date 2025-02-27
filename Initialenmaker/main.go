@@ -4,6 +4,7 @@ import (
         "bufio"
         "fmt"
         "os"
+        "regexp"
         "strings"
 )
 
@@ -41,6 +42,8 @@ func main() {
 
                 if naam == "" {
                         fmt.Println("Fout: Voer een naam in.")
+                } else if regexp.MustCompile(`\d`).MatchString(naam) { // Correcte reguliere expressie
+                        fmt.Println("Fout: Een naam mag geen cijfers bevatten.")
                 } else {
                         fmt.Println(berekenInitialen(naam))
                 }
