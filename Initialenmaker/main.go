@@ -26,7 +26,7 @@ func berekenInitialen(naam string) string {
         }
 
         if len(initialen) > 0 {
-                return initialen[:len(initialen)-1] // Verwijder de laatste punt
+                return initialen[:len(initialen)-1]
         }
         return initialen
 }
@@ -35,7 +35,7 @@ func main() {
         reader := bufio.NewReader(os.Stdin)
         fmt.Print("Voer een naam in: ")
         naam, _ := reader.ReadString('\n')
-        naam = strings.TrimSpace(naam) // Verwijder de newline
+        naam = strings.TrimSpace(naam)
 
         fmt.Println(berekenInitialen(naam))
 }
