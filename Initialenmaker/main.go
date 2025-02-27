@@ -40,12 +40,22 @@ func main() {
                 naam, _ := reader.ReadString('\n')
                 naam = strings.TrimSpace(naam)
 
+                // Verwijder meerdere spaties
+                reSpaties := regexp.MustCompile(`\s+`)
+                naam = reSpaties.ReplaceAllString(naam, " ")
+
                 if naam == "" {
                         fmt.Println("Fout: Voer een naam in.")
-                } else if regexp.MustCompile(`\d`).MatchString(naam) { // Correcte reguliere expressie
+                } else if regexp.MustCompile(`\d`).MatchString(naam) {
                         fmt.Println("Fout: Een naam mag geen cijfers bevatten.")
                 } else {
-                        fmt.Println(berekenInitialen(naam))
+                        // Controleer op ongeldige tekens (alles behalve letters en spaties)
+                        reOngeldig := regexp.MustCompile(`[^a-zA-Z\s]`)
+                        if reOngeldig.MatchString(naam) {
+                                fmt.Println("Fout: De naam bevat ongeldige tekens.")
+                        } else {
+                                fmt.Println(berekenInitialen(naam))
+                        }
                 }
 
                 fmt.Print("Type 'opnieuw' om opnieuw te proberen, of op Enter om af te sluiten: ")
