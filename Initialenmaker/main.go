@@ -37,8 +37,12 @@ func main() {
         naam, _ := reader.ReadString('\n')
         naam = strings.TrimSpace(naam)
 
-        fmt.Println(berekenInitialen(naam))
+        if naam == "" {
+                fmt.Println("Fout: Voer een naam in.")
+        } else {
+                fmt.Println(berekenInitialen(naam))
+        }
 
-		fmt.Println("Druk op Enter om af te sluiten")
-		bufio.NewReader(os.Stdin).ReadBytes('\n')
+        fmt.Println("Druk op Enter om af te sluiten")
+        bufio.NewReader(os.Stdin).ReadBytes('\n')
 }
