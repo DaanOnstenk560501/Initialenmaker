@@ -38,4 +38,7 @@ func main() {
         naam = strings.TrimSpace(naam)
 
         fmt.Println(berekenInitialen(naam))
+
+		fmt.Println("Druk op Enter om af te sluiten")
+		bufio.NewReader(os.Stdin).ReadBytes('\n')
 }
