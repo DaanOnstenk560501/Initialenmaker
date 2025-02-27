@@ -33,16 +33,24 @@ func berekenInitialen(naam string) string {
 
 func main() {
         reader := bufio.NewReader(os.Stdin)
-        fmt.Print("Voer een naam in: ")
-        naam, _ := reader.ReadString('\n')
-        naam = strings.TrimSpace(naam)
 
-        if naam == "" {
-                fmt.Println("Fout: Voer een naam in.")
-        } else {
-                fmt.Println(berekenInitialen(naam))
+        for {
+                fmt.Print("Voer een naam in: ")
+                naam, _ := reader.ReadString('\n')
+                naam = strings.TrimSpace(naam)
+
+                if naam == "" {
+                        fmt.Println("Fout: Voer een naam in.")
+                } else {
+                        fmt.Println(berekenInitialen(naam))
+                }
+
+                fmt.Print("Type 'opnieuw' om opnieuw te proberen, of op Enter om af te sluiten: ")
+                input, _ := reader.ReadString('\n')
+                input = strings.TrimSpace(input)
+
+                if strings.ToLower(input) != "opnieuw" {
+                        break
+                }
         }
-
-        fmt.Println("Druk op Enter om af te sluiten")
-        bufio.NewReader(os.Stdin).ReadBytes('\n')
 }
