@@ -52,7 +52,7 @@ func main() {
                         // Controleer op ongeldige tekens (alles behalve letters en spaties)
                         reOngeldig := regexp.MustCompile(`[^a-zA-Z\s]`)
                         if reOngeldig.MatchString(naam) {
-                                fmt.Println("Fout: De naam bevat ongeldige tekens.")
+                                fmt.Println("Fout: De naam bevat ongeldige tekens. Indien uw naam een apostrof of ander teken bevat hoeft u deze niet in te vullen")
                         } else {
                                 fmt.Println(berekenInitialen(naam))
                         }
